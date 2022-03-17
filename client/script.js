@@ -2,6 +2,8 @@
 //THE TEST SERVER IS RUNNING ON LOCALHOST:3000//
 ////////////////////////////////////////////////
 
+// const { default: axios } = require("axios")
+
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -10,8 +12,8 @@
 */
 
 // CODE HERE
-
-
+const sayhellobutton = document.querySelector('#say-hello-button')
+ console.log(sayhellobutton)
 // PROBLEM 2
 /*
     Create a function that changes sayHelloButton's background color to black and its text color to white (you can use the .style object or create a CSS class and use classList.add)
@@ -20,20 +22,29 @@
 */
 
 // CODE HERE
+ const helloBtn = function(e){
+     e.target.style.backgroundColor = 'black'
+     e.target.style.color = 'white'
+ }
 
 
+    sayhellobutton.addEventListener('mouseover', helloBtn)
 // PROBLEM 3
 /*
-    Now you can see that the button colors change, but they do not change back when we take the mouse off of the button.
-
-    Write another function that changes the button back to its original colors. #EFEFEF for the background and black for the text.
-
-    Attach another listener that fires your second function when the mouseout event occurs on the button
+    Now you can see that the button colors change, 
+    but they do not change back when we take the mouse off of the button.
+    Write another function that changes the button back to its original colors. 
+    #EFEFEF for the background and black for the text.
+Attach another listener that fires your second function when the mouseout event occurs on the button
 */
 
 // CODE HERE
 
-
+const button = (e) => {
+   e.target.style.backgroundColor = '#EFEFEF'
+   e.target.style.color = 'black'
+}
+sayhellobutton.addEventListener('mouseout', button)
 // PROBLEM 4
 /*
     Now lets see if we can make a request to our server when we click the button
@@ -53,7 +64,7 @@ const sayHello = () => {
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
-
+sayhellobutton.addEventListener('click', sayHello)
 
 // PROBLEM 5 
 /*
@@ -75,26 +86,33 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 
 // PROBLEM 6 
 /*
-    Now lets see if you can send a request param! inside repeatMyParam function below  make get request to 'http://localhost:3000/repeat/{SOMEPARAM}', but with a string instead of {SOMEPARAM}.  
+    Now lets see if you can send a request param! inside repeatMyParam function below  
+    make get request to 'http://localhost:3000/repeat/{SOMEPARAM}', but with a string 
+    instead of {SOMEPARAM}.  
+The function that runs when this request is made will return whatever parameter you sent 
 
-    The function that runs when this request is made will return whatever parameter you sent 
-
-    Handle the promise returned from the request with a .then, which will take in a callback -- the callback function should print the response.data.
-    
-    Outside of the function, select the button with the id "repeat-button" and add a click event listener that calls the repeatMyParam function.
+    Handle the promise returned from the request with a '.then,' 
+    which will take in a callback -- the callback function should print the *response.data*
+Outside of the function, select the button with the id "repeat-button" and add a click event listener 
+that calls the repeatMyParam function.
     
     We'll be updating this function in the next problem.
 */
 
 const repeatMyParam = () => {
     //YOUR CODE HERE
+  axios.get(`http://localhost:3000/repeat/'string'`).then((res)=>{
+    console.log(res.data)
+    document.getElementById('repeat-text').textContent = res.data 
+})
 }
-
+document.getElementById('repeat-button').addEventListener('click', repeatMyParam)
 // PROBLEM 7
 /*
     Now that we have the response data, let's add it to our web page! 
     
-    Inside the repeatMyParam function above, grab the element with the id of 'repeat-text' and set its textContent property equal to the response data.
+    Inside the repeatMyParam function above, grab the element with the id of 'repeat-text' 
+    and set its textContent property equal to the response data.
 */
 
 // Code in the repeatMyParam function above
@@ -105,14 +123,17 @@ const repeatMyParam = () => {
 /*
     Time to attach a query to our request!
 
-    Write a function that makes a get request to 'http://localhost:3000/query-test', with a query of your choice on the end!
+    Write a function that makes a get request to 'http://localhost:3000/query-test', 
+    with a query of your choice on the end!
 
-    Outside of your new function, select the button with the id "query-button" and add a click event listener that calls your function.
+    Outside of your new function, select the button with the id "query-button". 
+    and add a click event listener that calls your function.
 */
 
 // CODE HERE
+    const queryButton = (e => {
 
-
+    })   
 
 ////////////////
 //INTERMEDIATE//
