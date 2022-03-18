@@ -4,6 +4,8 @@
 
 // const { default: axios } = require("axios")
 
+// const { default: axios } = require("axios")
+
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -131,9 +133,19 @@ document.getElementById('repeat-button').addEventListener('click', repeatMyParam
 */
 
 // CODE HERE
-    const queryButton = (e => {
+    const queryButton = () => {
 
-    })   
+        axios.get(`http://localhost:3000/query-test`).then((res)=>{
+            console.log(res.data)
+            document.getElementById('query-button').textContent = res.data
+    })     
+    }
+    document.getElementById('query-button').addEventListener('click', queryButton)
+
+
+
+    
+    
 
 ////////////////
 //INTERMEDIATE//
